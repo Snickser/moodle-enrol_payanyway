@@ -1,5 +1,7 @@
 <?php
 
+$string['processexpirationstask'] = 'PayAnyWay enrolment send expiry notifications task';
+
 $string['pluginname'] = 'PayAnyWay';
 $string['pluginname_desc'] = 'This plugin lets you configure courses to be paid for using the PayAnyWay payment gateway.';
 
