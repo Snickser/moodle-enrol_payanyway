@@ -33,7 +33,6 @@ if (! $plugin_instance = $DB->get_record("enrol", array("id"=>$payanywaytx->inst
 
 $plugin = enrol_get_plugin('payanyway');
 
-
 if(isset($data['MNT_ID']) && isset($data['MNT_TRANSACTION_ID']) && isset($data['MNT_OPERATION_ID'])
 	&& isset($data['MNT_AMOUNT']) && isset($data['MNT_CURRENCY_CODE']) && isset($data['MNT_TEST_MODE'])
 	&& isset($data['MNT_SIGNATURE']))
@@ -45,10 +44,10 @@ if(isset($data['MNT_ID']) && isset($data['MNT_TRANSACTION_ID']) && isset($data['
 	}
 
 	// Check that amount paid is the correct amount
-	if ( (float) $plugin_instance->cost <= 0 ) {
+	if ( (float) $payanywaytx->cost <= 0 ) {
 		$cost = (float) $plugin->get_config('cost');
 	} else {
-		$cost = (float) $plugin_instance->cost;
+		$cost = (float) $payanywaytx->cost;
 	}
 
 	// Use the same rounding of floats as on the enrol form.
