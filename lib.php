@@ -66,6 +66,11 @@ class enrol_payanyway_plugin extends enrol_plugin {
         return has_capability('enrol/payanyway:config', $context);
     }
 
+    public function can_delete_instance($instance) {
+        $context = context_course::instance($instance->courseid);
+        return has_capability('enrol/payanyway:config', $context);
+    }
+
     /**
      * Sets up navigation entries.
      *
@@ -102,7 +107,7 @@ class enrol_payanyway_plugin extends enrol_plugin {
 
         if (has_capability('enrol/payanyway:config', $context)) {
             $editlink = new moodle_url("/enrol/payanyway/edit.php", array('courseid'=>$instance->courseid, 'id'=>$instance->id));
-            $icons[] = $OUTPUT->action_icon($editlink, new pix_icon('i/edit', get_string('edit'), 'core', array('class'=>'icon')));
+            $icons[] = $OUTPUT->action_icon($editlink, new pix_icon('i/settings', get_string('edit'), 'core', array('class'=>'icon')));
         }
 
         return $icons;
@@ -332,5 +337,6 @@ class enrol_payanyway_plugin extends enrol_plugin {
         $this->process_expirations($trace);
         return 0;
     }
+
 }
 
