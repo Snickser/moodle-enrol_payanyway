@@ -1,7 +1,7 @@
 PayAnyWay Enrolment Plugin
 ====================
 
-Simple enrolment plugin for Moodle 2.x using the PayAnyWay payment gateway.
+Simple enrolment plugin for Moodle 4.x using the PayAnyWay payment gateway.
 
 - © Copyright 2012 PayAnyWay <support@payanyway.ru>
 
