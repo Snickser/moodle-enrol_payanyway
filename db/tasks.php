@@ -34,16 +34,6 @@ $tasks = array(
         'month' => '*',
         'dayofweek' => '*',
         'disabled' => 0
-    ),
-    array(
-        'classname' => '\enrol_payanyway\task\send_expiry_notifications',
-        'blocking' => 0,
-        'minute' => '*/10',
-        'hour' => '*',
-        'day' => '*',
-        'month' => '*',
-        'dayofweek' => '*',
-        'disabled' => 0
     )
 );
 
