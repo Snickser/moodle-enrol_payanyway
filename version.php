@@ -2,7 +2,7 @@
 
 defined('MOODLE_INTERNAL') or die();
 
-$plugin->version = 2024031905;
+$plugin->version = 2024031906;
 $plugin->requires = 2010112400; // Moodle 2.x
 $plugin->component = 'enrol_payanyway';
 $plugin->cron      = 600;
