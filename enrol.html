@@ -1,0 +1,87 @@
+<div align="center">
+
+<p><?php print_string("paymentrequired") ?></p>
+<p><b><?php echo $instancename; ?></b></p>
+<p><b><?php echo get_string("cost").": {$instance->currency} {$cost}"; ?></b></p>
+<p><img alt="<?php print_string('payanywayaccepted', 'enrol_payanyway') ?>" src="<?php echo $CFG->wwwroot.'/enrol/payanyway/payanyway.png'; ?>" /></p>
+<p><?php print_string("paymentinstant") ?></p>
+</div>
+<?php
+	$paymentsystem = explode('_', $instance->customchar1);
+?>
+<form action="<?php echo $CFG->wwwroot.'/enrol/payanyway/pay.php'?>" method="post" class="mform">
+<?php
+	if ($paymentsystem[0] === 'euroset') {
+	
+	}
+	switch ($paymentsystem[0]) {
+		case 'euroset':
+?>
+<fieldset id="guestheader" class="clearfix">
+	<legend class="ftoggler"><?php print_string("additionalparameters", "enrol_payanyway") ?></legend>
+	<div class="fcontainer clearfix"><div class="fitem">
+		<div class="fitemtitle"><label for="id_rapidaphone"><?php print_string("eurosetrapidaphone", "enrol_payanyway")?></label></div>
+		<div class="felement"><input type="text" id="id_rapidaphone" name="additionalParameters.rapidaPhone" autocomplete="off"></div>
+	</div></div>
+</fieldset>
+<?php
+			break;
+		case 'moneymail':
+?>
+<fieldset id="guestheader" class="clearfix">
+	<legend class="ftoggler"><?php print_string("additionalparameters", "enrol_payanyway") ?></legend>
+	<div class="fcontainer clearfix"><div class="fitem">
+		<div class="fitemtitle"><label for="id_buyeremail"><?php print_string("moneymailemail", "enrol_payanyway")?></label></div>
+		<div class="felement"><input type="text" id="id_buyeremail" name="additionalParameters.buyerEmail" autocomplete="off"></div>
+	</div></div>
+</fieldset>
+<?php
+			break;
+		case 'post':
+?>
+<fieldset id="guestheader" class="clearfix">
+	<legend class="ftoggler"><?php print_string("additionalparameters", "enrol_payanyway") ?></legend>
+	<div class="fcontainer clearfix"><div class="fitem">
+		<div class="fitemtitle"><label for="id_mailofrussiasenderindex"><?php print_string("mailofrussiasenderindex", "enrol_payanyway")?></label></div>
+		<div class="felement"><input type="text" id="id_mailofrussiasenderindex" name="additionalParameters.mailofrussiaSenderIndex" autocomplete="off"></div>
+	</div></div>
+	<div class="fcontainer clearfix"><div class="fitem">
+		<div class="fitemtitle"><label for="id_mailofrussiasenderaddress"><?php print_string("mailofrussiasenderaddress", "enrol_payanyway")?></label></div>
+		<div class="felement"><input type="text" id="id_mailofrussiasenderaddress" name="additionalParameters.mailofrussiaSenderAddress" autocomplete="off"></div>
+	</div></div>
+	<div class="fcontainer clearfix"><div class="fitem">
+		<div class="fitemtitle"><label for="id_mailofrussiasendername"><?php print_string("mailofrussiasendername", "enrol_payanyway")?></label></div>
+		<div class="felement"><input type="text" id="id_mailofrussiasendername" name="additionalParameters.mailofrussiaSenderName" autocomplete="off"></div>
+	</div></div>
+</fieldset>
+<?php
+			break;
+		case 'webmoney':
+?>
+<fieldset id="guestheader" class="clearfix">
+	<legend class="ftoggler"><?php print_string("additionalparameters", "enrol_payanyway") ?></legend>
+	<div class="fcontainer clearfix"><div class="fitem">
+		<div class="fitemtitle"><label for="id_webmoneyaccountid"><?php print_string("webmoneyaccountid", "enrol_payanyway")?></label></div>
+		<div class="felement">
+			<select id="id_webmoneyaccountid" name="paymentSystem.accountId">
+				<option value="2">WMR</option>
+				<option value="3">WMZ</option>
+				<option value="4">WME</option>
+			</select>
+		</div>
+	</div></div>
+</fieldset>
+<?php
+			break;
+	}
+?>
+<input type="hidden" name="id" value="<?php p($instance->id)?>" />
+	  
+<input type="hidden" name="course_id" value="<?php echo $course->id;  ?>" />
+
+<div align="center">
+	<input type="submit" value="<?php print_string('sendpaymentbutton', 'enrol_payanyway') ?>" />
+</div>
+
+</form>
+
