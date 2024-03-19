@@ -11,10 +11,21 @@ if (!$plugin_instance = $DB->get_record("enrol", array("id"=>$id, "status"=>0)))
     print_error('invalidinstance');
 }
 
+file_put_contents("/tmp/aaaa", serialize($plugin_instance)."\n", FILE_APPEND);
+
 $plugin = enrol_get_plugin('payanyway');
 
 $transaction_id = $plugin->begin_transaction($plugin_instance, $USER);
+
 $cost = number_format($plugin_instance->cost, 2, '.', '');
+
+foreach($_REQUEST as $key=>$value)
+{
+    if( strpos($key, "cost_self") !== false ) {
+	$cost = number_format($value, 2, '.', '');;
+    }
+}
+
 $paymentsystem = explode('_', $plugin_instance->customchar1);
 $mntsignature = md5($plugin->get_config('mntid').$transaction_id.$cost.$plugin_instance->currency.$plugin->get_config('mnttestmode').$plugin->get_config('mntdataintegritycode'));
 
@@ -34,7 +45,11 @@ foreach($_REQUEST as $key=>$value)
 		$key = str_replace("_", ".", $key);
 		$additionalparams .= "&{$key}={$value}";
 	}
+    if( strpos($key, "cost") !== false ) {
+	$cost = $value;
+    }
 }
+
 $paymentsystemparams = "";
 if (!empty($paymentsystem[2]))
 {
@@ -56,8 +71,6 @@ if (! $user = $DB->get_record("user", array("id"=>$payanywaytx->userid))) {
 if (! $course = $DB->get_record("course", array("id"=>$payanywaytx->courseid))) {
     die('FAIL. Not a valid course id.');
 }
-
-//file_put_contents("/tmp/aaaa", serialize($course)."\n", FILE_APPEND);
 
 redirect($paymenturl."
 	MNT_ID={$plugin->get_config('mntid')}&
