@@ -44,5 +44,6 @@ if (empty($options['verbose'])) {
 $plugin = enrol_get_plugin('payanyway');
 
 $result = $plugin->sync($trace);
+$plugin->send_expiry_notifications($trace);
 
 exit($result);
