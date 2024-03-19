@@ -2,6 +2,10 @@
 
 $string['processexpirationstask'] = 'PayAnyWay process expirations task';
 $string['sendexpirynotificationstask'] = 'PayAnyWay enrolment send expiry notifications task';
+$string['expirymessageenrolledsubject'] = 'Enrolment expiry notification';
+$string['expirymessageenrolledbody'] = 'Dear {$a->user},
+
+This is a notification that your enrolment in the course \'{$a->course}\' is due to expire on {$a->timeend}.';
 
 $string['pluginname'] = 'PayAnyWay';
 $string['pluginname_desc'] = 'This plugin lets you configure courses to be paid for using the PayAnyWay payment gateway.';
