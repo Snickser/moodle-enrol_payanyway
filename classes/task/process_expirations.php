@@ -17,7 +17,7 @@
 /**
  * Process expirations task.
  *
- * @package   enrol_paypal
+ * @package   enrol_payanyway
  * @author    Farhan Karmali <farhan6318@gmail.com>
  * @copyright Farhan Karmali
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
