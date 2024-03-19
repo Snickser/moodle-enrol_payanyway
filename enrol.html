@@ -2,14 +2,32 @@
 
 <p><?php print_string("paymentrequired") ?></p>
 <p><b><?php echo $instancename; ?></b></p>
-<p><b><?php echo get_string("cost").": {$instance->currency} {$cost}"; ?></b></p>
-<p><img alt="<?php print_string('payanywayaccepted', 'enrol_payanyway') ?>" src="<?php echo $CFG->wwwroot.'/enrol/payanyway/payanyway.png'; ?>" /></p>
-<p><?php print_string("paymentinstant") ?></p>
+
 </div>
+
 <?php
 	$paymentsystem = explode('_', $instance->customchar1);
 ?>
+
 <form action="<?php echo $CFG->wwwroot.'/enrol/payanyway/pay.php'?>" method="post" class="mform">
+
+<div align="center">
+
+<p><b><?php echo get_string("cost").": " ?>
+<select name="cost_self" id="cost_self">
+  <option value="2">2</option>
+  <option value="5">5</option>
+  <option value="10">10</option>
+  <option selected value="<?php echo "{$cost}";?>"><?php echo "{$cost}";?></option>
+</select>
+<?php echo " {$instance->currency}"; ?>
+</b></p>
+
+<p><img alt="<?php print_string('payanywayaccepted', 'enrol_payanyway') ?>" src="<?php echo $CFG->wwwroot.'/enrol/payanyway/payanyway.png'; ?>" /></p>
+<p><?php print_string("paymentinstant") ?></p>
+
+</div>
+
 <?php
 	if ($paymentsystem[0] === 'euroset') {
 	
@@ -75,6 +93,8 @@
 			break;
 	}
 ?>
+
+
 <input type="hidden" name="id" value="<?php p($instance->id)?>" />
 	  
 <input type="hidden" name="course_id" value="<?php echo $course->id;  ?>" />
