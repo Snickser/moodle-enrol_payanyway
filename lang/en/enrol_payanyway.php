@@ -1,6 +1,6 @@
 <?php
 
-$string['processexpirationstask'] = 'Synchronise PayAnyWay enrolments task';
+$string['syncenrolmentstask'] = 'Synchronise PayAnyWay enrolments task';
 $string['sendexpirynotificationstask'] = 'PayAnyWay enrolment send expiry notifications task';
 
 $string['expirymessageenrolledsubject'] = 'Enrolment expiry notification';
