@@ -1,11 +1,23 @@
 <?php
 
-$string['processexpirationstask'] = 'PayAnyWay process expirations task';
-$string['sendexpirynotificationstask'] = 'PayAnyWay enrolment send expiry notifications task';
+$string['syncenrolmentstask'] = 'PayAnyWay синхронизация зачислений';
+$string['sendexpirynotificationstask'] = 'PayAnyWay отправка уведомлений об истечении срока действия зачисления';
+$string['messageprovider:expiry_notification'] = 'Уведомления об истечении срока обучения';
+
+$string['expirymessageenrolledsubject'] = 'Уведомление об окончании обучения';
+$string['expirymessageenrolledbody'] = 'Уважаемый(ая) {$a->user}, уведомляем Вас, что обучение в курсе «{$a->course}» истекает {$a->timeend}. При необходимости свяжитесь с {$a->enroller}.';
+$string['expirymessageenrollersubject'] = 'Уведомление об окончании обучения';
+$string['expirymessageenrollerbody'] = 'Зачисление в курсе «{$a->course}» истекает в течение следующих {$a->threshold} для перечисленных пользователей:
+
+{$a->users}.
+
+Чтобы продлить их зачисление, перейдите на {$a->extendurl}';
+
+
+
 
 $string['pluginname'] = 'PayAnyWay';
 $string['pluginname_desc'] = 'Плагин позволяет принимать оплаты курсов через PayAnyWay.';
-
 $string['status'] = 'Разрешить подписку через PayAnyWay';
 $string['status_desc'] = 'Позволить пользователям использовать подписку на курс через PayAnyWay по умолчанию.';
 $string['cost'] = 'Стоимость записи';

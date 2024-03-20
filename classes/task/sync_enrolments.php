@@ -15,35 +15,43 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Task definition for enrol_manual.
+ * Syncing enrolments task.
+ *
+ * @package   enrol_payanyway
  * @author    Farhan Karmali <farhan6318@gmail.com>
  * @copyright Farhan Karmali
- * @package   enrol_payanyway
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+namespace enrol_payanyway\task;
+
 defined('MOODLE_INTERNAL') || die();
 
-$tasks = array(
-    array(
-        'classname' => '\enrol_payanyway\task\sync_enrolments',
-        'blocking' => 0,
-        'minute' => '*/10',
-        'hour' => '*',
-        'day' => '*',
-        'month' => '*',
-        'dayofweek' => '*',
-        'disabled' => 0
-    ),
-    array(
-        'classname' => '\enrol_payanyway\task\send_expiry_notifications',
-        'blocking' => 0,
-        'minute' => '*/10',
-        'hour' => '*',
-        'day' => '*',
-        'month' => '*',
-        'dayofweek' => '*',
-        'disabled' => 0
-    )
-);
+/**
+ * Syncing enrolments task.
+ *
+ * @package   enrol_payanyway
+ * @author    Farhan Karmali <farhan6318@gmail.com>
+ * @copyright Farhan Karmali
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+class sync_enrolments extends \core\task\scheduled_task {
 
+    /**
+     * Name for this task.
+     *
+     * @return string
+     */
+    public function get_name() {
+        return get_string('syncenrolmentstask', 'enrol_payanyway');
+    }
+
+    /**
+     * Run task for syncing enrolments.
+     */
+    public function execute() {
+        $enrol = enrol_get_plugin('payanyway');
+        $trace = new \text_progress_trace();
+        $enrol->sync($trace);
+    }
+}

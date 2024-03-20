@@ -13,18 +13,43 @@
 
 <div align="center">
 
-<p><b><?php echo get_string("cost").": " ?>
-<select name="cost_self" id="cost_self">
-  <option value="2">2</option>
-  <option value="5">5</option>
-  <option value="10">10</option>
-  <option value="100">100</option>
+<p><b>
+<?php echo get_string("cost"); ?>:&nbsp;
+<input type="number" id="cost_self" name="cost_self" min="<?php echo "{$cost}";?>" max="5000"
+value="<?php echo "{$cost}";?>" size="5" required autofocus >&nbsp;
+<!-- select name="cost_self" id="cost_self">
+  <option value="800">800</option>
+  <option value="1600">1600</option>
+  <option value="5000">5000</option>
   <option selected value="<?php echo "{$cost}";?>"><?php echo "{$cost}";?></option>
-</select>
+</select -->
 <?php echo " {$instance->currency}"; ?>
 </b></p>
 
-<p><img alt="<?php print_string('payanywayaccepted', 'enrol_payanyway') ?>" src="<?php echo $CFG->wwwroot.'/enrol/payanyway/payanyway.png'; ?>" /></p>
+<p>
+
+<?php
+if( $instance->enrolperiod>0 ){
+ echo "Длительность подписки на курс ";
+ if($instance->enrolperiod>=86400){
+    echo "(дней): ";
+    echo round($instance->enrolperiod/86400);
+ } else if($instance->enrolperiod>=3600) {
+    echo "(часов): ";
+    echo round($instance->enrolperiod/3600);
+ } else if($instance->enrolperiod>=60) {
+    echo "(минут): ";
+    echo round($instance->enrolperiod/60);
+ } else {
+    echo "(секунд): ";
+    echo $instance->enrolperiod;
+ }
+} ?>
+
+</p>
+
+
+<p><img alt="<?php print_string('payanywayaccepted', 'enrol_payanyway') ?>" height=80 src="<?php echo $CFG->wwwroot.'/enrol/payanyway/payanyway.png'; ?>" /></p>
 <p><?php print_string("paymentinstant") ?></p>
 
 </div>

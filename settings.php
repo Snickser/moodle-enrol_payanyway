@@ -30,6 +30,14 @@ if ($ADMIN->fulltree) {
         ENROL_EXT_REMOVED_UNENROL        => get_string('extremovedunenrol', 'enrol'),
     );
     $settings->add(new admin_setting_configselect('enrol_payanyway/expiredaction', get_string('expiredaction', 'enrol_payanyway'), get_string('expiredaction_help', 'enrol_payanyway'), ENROL_EXT_REMOVED_SUSPENDNOROLES, $options));
+
+    $options = array();
+    for ($i=0; $i<24; $i++) {
+        $options[$i] = $i;
+    }
+    $settings->add(new admin_setting_configselect('enrol_payanyway/expirynotifyhour',
+get_string('expirynotifyhour', 'core_enrol'), '', 6, $options));
+
 	
     //--- enrol instance defaults ----------------------------------------------------------------------------
     $settings->add(new admin_setting_heading('enrol_payanyway_defaults',

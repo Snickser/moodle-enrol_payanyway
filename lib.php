@@ -107,7 +107,7 @@ class enrol_payanyway_plugin extends enrol_plugin {
 
         if (has_capability('enrol/payanyway:config', $context)) {
             $editlink = new moodle_url("/enrol/payanyway/edit.php", array('courseid'=>$instance->courseid, 'id'=>$instance->id));
-            $icons[] = $OUTPUT->action_icon($editlink, new pix_icon('i/settings', get_string('edit'), 'core', array('class'=>'icon')));
+            $icons[] = $OUTPUT->action_icon($editlink, new pix_icon('i/edit', get_string('edit'), 'core', array('class'=>'icon')));
         }
 
         return $icons;

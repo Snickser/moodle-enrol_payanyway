@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Process expirations task.
+ * The send expiry notifications task.
  *
  * @package   enrol_payanyway
  * @author    Farhan Karmali <farhan6318@gmail.com>
@@ -28,14 +28,14 @@ namespace enrol_payanyway\task;
 defined('MOODLE_INTERNAL') || die();
 
 /**
- * Process expirations task.
+ * The send expiry notifications task.
  *
  * @package   enrol_payanyway
  * @author    Farhan Karmali <farhan6318@gmail.com>
  * @copyright Farhan Karmali
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class process_expirations extends \core\task\scheduled_task {
+class send_expiry_notifications extends \core\task\scheduled_task {
 
     /**
      * Name for this task.
@@ -43,16 +43,16 @@ class process_expirations extends \core\task\scheduled_task {
      * @return string
      */
     public function get_name() {
-        return get_string('processexpirationstask', 'enrol_payanyway');
+        return get_string('sendexpirynotificationstask', 'enrol_payanyway');
     }
 
     /**
-     * Run task for processing expirations.
+     * Run task for sending expiry notifications.
      */
     public function execute() {
         $enrol = enrol_get_plugin('payanyway');
         $trace = new \text_progress_trace();
-        $enrol->process_expirations($trace);
+        $enrol->send_expiry_notifications($trace);
     }
 
 }
