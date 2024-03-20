@@ -11,11 +11,8 @@ if (!$plugin_instance = $DB->get_record("enrol", array("id"=>$id, "status"=>0)))
     print_error('invalidinstance');
 }
 
-foreach($_REQUEST as $key=>$value)
-{
-    if( strpos($key, "cost_self") !== false ) {
-	$plugin_instance->cost = number_format($value, 2, '.', '');;
-    }
+if ( isset($_REQUEST['cost_self']) ) {
+    $plugin_instance->cost = number_format($_REQUEST['cost_self'], 2, '.', '');
 }
 
 $plugin = enrol_get_plugin('payanyway');
