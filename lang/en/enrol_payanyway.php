@@ -2,15 +2,27 @@
 
 $string['syncenrolmentstask'] = 'Synchronise PayAnyWay enrolments task';
 $string['sendexpirynotificationstask'] = 'PayAnyWay enrolment send expiry notifications task';
+$string['messageprovider:expiry_notification'] = 'Enrolment expiry notifications';
 
+$string['expirymessageenrollersubject'] = 'Enrolment expiry notification';
+$string['expirymessageenrollerbody'] = 'Enrolment in the course \'{$a->course}\' will expire within the next {$a->threshold}
+
+{$a->users}
+
+To extend their enrolment, go to {$a->extendurl}';
 $string['expirymessageenrolledsubject'] = 'Enrolment expiry notification';
 $string['expirymessageenrolledbody'] = 'Dear {$a->user},
 
-This is a notification that your enrolment in the course \'{$a->course}\' is due to expire on {$a->timeend}.';
+This is a notification that your enrolment in the course \'{$a->course}\' is due to expire on {$a->timeend}.
+
+If you need help, please contact {$a->enroller}.';
+
+
+
+
 
 $string['pluginname'] = 'PayAnyWay';
 $string['pluginname_desc'] = 'This plugin lets you configure courses to be paid for using the PayAnyWay payment gateway.';
-
 $string['status'] = 'Allow PayAnyWay enrolments';
 $string['status_desc'] = 'Allow users to use PayAnyWay to enrol into a course by default.';
 $string['cost'] = 'Enrol cost';
