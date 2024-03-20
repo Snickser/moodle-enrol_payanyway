@@ -1,7 +1,8 @@
 <?php
 
-$string['processexpirationstask'] = 'PayAnyWay process expirations task';
+$string['processexpirationstask'] = 'Synchronise PayAnyWay enrolments task';
 $string['sendexpirynotificationstask'] = 'PayAnyWay enrolment send expiry notifications task';
+
 $string['expirymessageenrolledsubject'] = 'Enrolment expiry notification';
 $string['expirymessageenrolledbody'] = 'Dear {$a->user},
 
