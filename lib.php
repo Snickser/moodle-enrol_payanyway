@@ -38,9 +38,9 @@ class enrol_payanyway_plugin extends enrol_plugin {
      * @param array $instances all enrol instances of this type in one course
      * @return array of pix_icon
      */
-    public function get_info_icons(array $instances) {
-        return array(new pix_icon('icon', get_string('pluginname', 'enrol_payanyway'), 'enrol_payanyway'));
-    }
+//    public function get_info_icons(array $instances) {
+//        return array(new pix_icon('icon', get_string('pluginname', 'enrol_payanyway'), 'enrol_payanyway'));
+//    }
 
     public function roles_protected() {
         // users with role assign cap may tweak the roles later
