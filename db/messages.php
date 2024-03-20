@@ -15,9 +15,9 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Defines message providers for manual enrolments.
+ * Defines message providers for payanyway enrolments.
  *
- * @package    enrol_manual
+ * @package    enrol_payanyway
  * @copyright  2012 Petr Skoda {@link http://skodak.org}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */

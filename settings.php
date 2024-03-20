@@ -35,9 +35,7 @@ if ($ADMIN->fulltree) {
     for ($i=0; $i<24; $i++) {
         $options[$i] = $i;
     }
-    $settings->add(new admin_setting_configselect('enrol_payanyway/expirynotifyhour',
-get_string('expirynotifyhour', 'core_enrol'), '', 6, $options));
-
+    $settings->add(new admin_setting_configselect('enrol_payanyway/expirynotifyhour', get_string('expirynotifyhour', 'core_enrol'), '', 6, $options));
 	
     //--- enrol instance defaults ----------------------------------------------------------------------------
     $settings->add(new admin_setting_heading('enrol_payanyway_defaults',
