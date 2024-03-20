@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Task definition for enrol_payanyway.
+ * Task definition for enrol_manual.
  * @author    Farhan Karmali <farhan6318@gmail.com>
  * @copyright Farhan Karmali
  * @package   enrol_payanyway
@@ -26,9 +26,19 @@ defined('MOODLE_INTERNAL') || die();
 
 $tasks = array(
     array(
-        'classname' => '\enrol_payanyway\task\process_expirations',
+        'classname' => '\enrol_payanyway\task\sync_enrolments',
         'blocking' => 0,
-        'minute' => '*',
+        'minute' => '*/10',
+        'hour' => '*',
+        'day' => '*',
+        'month' => '*',
+        'dayofweek' => '*',
+        'disabled' => 0
+    ),
+    array(
+        'classname' => '\enrol_payanyway\task\send_expiry_notifications',
+        'blocking' => 0,
+        'minute' => '*/10',
         'hour' => '*',
         'day' => '*',
         'month' => '*',
