@@ -24,6 +24,11 @@ class enrol_payanyway_edit_form extends moodleform {
 
         $mform->addElement('text', 'name', get_string('custominstancename', 'enrol'));
         // $mform->setType('name', PARAM_TEXT);
+
+        $mform->addElement('textarea', 'customtext1', get_string('editdescription', 'enrol_payanyway'), array('rows'=>5) );
+        $mform->setDefault('customtext1', $plugin->get_config('description'));
+        $mform->setType('customtext1', PARAM_RAW); // XSS is prevented when printing the block contents and serving files
+        $mform->addHelpButton('customtext1', 'editdescription', 'enrol_payanyway');
 		
 		$paymentsystems = array(
 			'payanyway_0_0' => get_string('payanyway', 'enrol_payanyway'),
@@ -76,7 +81,6 @@ class enrol_payanyway_edit_form extends moodleform {
         }
         $mform->addElement('select', 'roleid', get_string('assignrole', 'enrol_payanyway'), $roles);
         $mform->setDefault('roleid', $plugin->get_config('roleid'));
-
 
         $mform->addElement('duration', 'enrolperiod', get_string('enrolperiod', 'enrol_payanyway'), array('optional' => true, 'defaultunit' => 86400));
         $mform->setDefault('enrolperiod', $plugin->get_config('enrolperiod'));

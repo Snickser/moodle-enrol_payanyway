@@ -44,6 +44,7 @@ if ($mform->is_cancelled()) {
     if ($instance->id) {
         $instance->status         = $data->status;
         $instance->name           = $data->name;
+        $instance->customtext1    = $data->customtext1;
         $instance->customchar1    = $data->customchar1;
         $instance->cost           = $data->cost;
         $instance->currency       = $data->currency;
@@ -60,7 +61,8 @@ if ($mform->is_cancelled()) {
     } else {
         $fields = array('status'=>$data->status, 'name'=>$data->name, 'customchar1'=>$data->customchar1, 'cost'=>$data->cost, 'currency'=>$data->currency,
                         'roleid'=>$data->roleid, 'enrolperiod'=>$data->enrolperiod, 'enrolstartdate'=>$data->enrolstartdate, 'enrolenddate'=>$data->enrolenddate,
-                        'expirynotify'=>$data->expirynotify, 'notifyall'=>$data->expirynotify == 2 ? 1 : 0, 'expirythreshold'=>$data->expirythreshold);
+                        'expirynotify'=>$data->expirynotify, 'notifyall'=>$data->expirynotify == 2 ? 1 : 0, 'expirythreshold'=>$data->expirythreshold,
+                        'customtext1'=>$data->customtext1);
         $plugin->add_instance($course, $fields);
     }
 

@@ -17,7 +17,8 @@ This is a notification that your enrolment in the course \'{$a->course}\' is due
 
 If you need help, please contact {$a->enroller}.';
 $string['custom_html'] = '';
-
+$string['editdescription'] = 'Description';
+$string['editdescription_help'] = 'HTML';
 
 $string['pluginname'] = 'PayAnyWay';
 $string['pluginname_desc'] = 'This plugin lets you configure courses to be paid for using the PayAnyWay payment gateway.';

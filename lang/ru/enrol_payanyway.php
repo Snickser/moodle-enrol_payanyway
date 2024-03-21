@@ -13,8 +13,8 @@ $string['expirymessageenrollerbody'] = 'Зачисление в курсе «{$a
 
 Чтобы продлить их зачисление, перейдите на {$a->extendurl}';
 $string['custom_html'] = '<p><font size=2>Если вы хотите пожертвовать больше, то просто впишите свою сумму вместо указанной.</font></p>';
-
-
+$string['editdescription'] = 'Описание';
+$string['editdescription_help'] = 'Этот текст будет вставлен в страницу записа на курс. Формат HTML.';
 
 $string['pluginname'] = 'PayAnyWay';
 $string['pluginname_desc'] = 'Плагин позволяет принимать оплаты курсов через PayAnyWay.';
