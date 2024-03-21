@@ -13,7 +13,7 @@
 
 <div align="center">
 
-<p><font size=2>Если вы хотите пожертвовать больше, то просто впишите свою сумму вместо указанной.</font></p>
+<?php print_string('custom_html', 'enrol_payanyway') ?>
 
 <p><b>
 <?php echo get_string("cost"); ?>:&nbsp;
@@ -29,7 +29,6 @@ value="<?php echo "{$cost}";?>" size="5">&nbsp;
 </b></p>
 
 <p>
-
 <?php
 if( $instance->enrolperiod>0 ){
  echo "Продолжительность подписки на курс ";
@@ -47,7 +46,6 @@ if( $instance->enrolperiod>0 ){
     echo $instance->enrolperiod;
  }
 } ?>
-
 </p>
 
 

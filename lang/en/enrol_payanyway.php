@@ -16,9 +16,7 @@ $string['expirymessageenrolledbody'] = 'Dear {$a->user},
 This is a notification that your enrolment in the course \'{$a->course}\' is due to expire on {$a->timeend}.
 
 If you need help, please contact {$a->enroller}.';
-
-
-
+$string['custom_html'] = '';
 
 
 $string['pluginname'] = 'PayAnyWay';
