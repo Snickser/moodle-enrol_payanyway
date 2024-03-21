@@ -18,9 +18,9 @@ if ($ADMIN->fulltree) {
 
     $settings->add(new admin_setting_configcheckbox('enrol_payanyway/mnttestmode', get_string('mnttestmode', 'enrol_payanyway'), '', 0));
 
-    $settings->add(new admin_setting_configtext('enrol_payanyway/payanywaylogin', get_string('payanywaylogin', 'enrol_payanyway'), '', '', PARAM_EMAIL));
+//    $settings->add(new admin_setting_configtext('enrol_payanyway/payanywaylogin', get_string('payanywaylogin', 'enrol_payanyway'), '', '', PARAM_EMAIL));
 
-    $settings->add(new admin_setting_configtext('enrol_payanyway/payanywaypassword', get_string('payanywaypassword', 'enrol_payanyway'), '', ''));
+//    $settings->add(new admin_setting_configtext('enrol_payanyway/payanywaypassword', get_string('payanywaypassword', 'enrol_payanyway'), '', ''));
 
     // Note: let's reuse the ext sync constants and strings here, internally it is very similar,
     //       it describes what should happen when users are not supposed to be enrolled any more.
@@ -35,9 +35,7 @@ if ($ADMIN->fulltree) {
     for ($i=0; $i<24; $i++) {
         $options[$i] = $i;
     }
-    $settings->add(new admin_setting_configselect('enrol_payanyway/expirynotifyhour',
-get_string('expirynotifyhour', 'core_enrol'), '', 6, $options));
-
+    $settings->add(new admin_setting_configselect('enrol_payanyway/expirynotifyhour', get_string('expirynotifyhour', 'core_enrol'), '', 6, $options));
 	
     //--- enrol instance defaults ----------------------------------------------------------------------------
     $settings->add(new admin_setting_heading('enrol_payanyway_defaults',

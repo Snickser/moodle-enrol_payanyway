@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Task definition for enrol_manual.
+ * Task definition for enrol_payanyway.
  * @author    Farhan Karmali <farhan6318@gmail.com>
  * @copyright Farhan Karmali
  * @package   enrol_payanyway

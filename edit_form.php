@@ -6,6 +6,15 @@ require_once($CFG->libdir.'/formslib.php');
 
 class enrol_payanyway_edit_form extends moodleform {
 
+    function get_expirynotify_options() {
+        $options = array(
+            0 => get_string('no'),
+            1 => get_string('expirynotifyenroller', 'core_enrol'),
+            2 => get_string('expirynotifyall', 'core_enrol')
+        );
+        return $options;
+    }
+
     function definition() {
         $mform = $this->_form;
 
@@ -15,6 +24,11 @@ class enrol_payanyway_edit_form extends moodleform {
 
         $mform->addElement('text', 'name', get_string('custominstancename', 'enrol'));
         // $mform->setType('name', PARAM_TEXT);
+
+        $mform->addElement('textarea', 'customtext1', get_string('editdescription', 'enrol_payanyway'), array('rows'=>5) );
+        $mform->setDefault('customtext1', $plugin->get_config('description'));
+        $mform->setType('customtext1', PARAM_RAW); // XSS is prevented when printing the block contents and serving files
+        $mform->addHelpButton('customtext1', 'editdescription', 'enrol_payanyway');
 		
 		$paymentsystems = array(
 			'payanyway_0_0' => get_string('payanyway', 'enrol_payanyway'),
@@ -68,7 +82,6 @@ class enrol_payanyway_edit_form extends moodleform {
         $mform->addElement('select', 'roleid', get_string('assignrole', 'enrol_payanyway'), $roles);
         $mform->setDefault('roleid', $plugin->get_config('roleid'));
 
-
         $mform->addElement('duration', 'enrolperiod', get_string('enrolperiod', 'enrol_payanyway'), array('optional' => true, 'defaultunit' => 86400));
         $mform->setDefault('enrolperiod', $plugin->get_config('enrolperiod'));
         $mform->addHelpButton('enrolperiod', 'enrolperiod', 'enrol_payanyway');
@@ -92,6 +105,15 @@ class enrol_payanyway_edit_form extends moodleform {
             "courseid" => PARAM_INT
         ]);
 
+        $options = $this->get_expirynotify_options();
+        $mform->addElement('select', 'expirynotify', get_string('expirynotify', 'core_enrol'), $options);
+        $mform->addHelpButton('expirynotify', 'expirynotify', 'core_enrol');
+
+        $options = array('optional' => false, 'defaultunit' => 86400);
+        $mform->addElement('duration', 'expirythreshold', get_string('expirythreshold', 'core_enrol'), $options);
+        $mform->addHelpButton('expirythreshold', 'expirythreshold', 'core_enrol');
+        $mform->disabledIf('expirythreshold', 'expirynotify', 'eq', 0);
+
         $this->add_action_buttons(true, ($instance->id ? null : get_string('addinstance', 'enrol')));
 
         $this->set_data($instance);
@@ -112,6 +134,10 @@ class enrol_payanyway_edit_form extends moodleform {
                 $errors['cost'] = get_string('costerror', 'enrol_payanyway');
 
             }
+        }
+
+        if ($data['expirynotify'] > 0 and $data['expirythreshold'] < 86400) {
+            $errors['expirythreshold'] = get_string('errorthresholdlow', 'core_enrol');
         }
 
         return $errors;
