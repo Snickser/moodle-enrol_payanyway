@@ -44,7 +44,7 @@ if ($mform->is_cancelled()) {
     if ($instance->id) {
         $instance->status         = $data->status;
         $instance->name           = $data->name;
-		$instance->customchar1    = $data->customchar1;
+        $instance->customchar1    = $data->customchar1;
         $instance->cost           = $data->cost;
         $instance->currency       = $data->currency;
         $instance->roleid         = $data->roleid;
@@ -52,15 +52,15 @@ if ($mform->is_cancelled()) {
         $instance->enrolstartdate = $data->enrolstartdate;
         $instance->enrolenddate   = $data->enrolenddate;
         $instance->timemodified   = time();
-        $instance->expirynotify   = 2;
-        $instance->notifyall      = 1;
-        $instance->expirythreshold = 86400;
+        $instance->expirynotify   = $data->expirynotify;
+        $instance->notifyall      = $data->expirynotify == 2 ? 1 : 0;
+        $instance->expirythreshold = $data->expirythreshold;
         $DB->update_record('enrol', $instance);
 
     } else {
         $fields = array('status'=>$data->status, 'name'=>$data->name, 'customchar1'=>$data->customchar1, 'cost'=>$data->cost, 'currency'=>$data->currency,
                         'roleid'=>$data->roleid, 'enrolperiod'=>$data->enrolperiod, 'enrolstartdate'=>$data->enrolstartdate, 'enrolenddate'=>$data->enrolenddate,
-                        'expirynotify'=>2, 'notifyall'=>1, 'expirythreshold'=>86400);
+                        'expirynotify'=>$data->expirynotify, 'notifyall'=>$data->expirynotify == 2 ? 1 : 0, 'expirythreshold'=>$data->expirythreshold);
         $plugin->add_instance($course, $fields);
     }
 

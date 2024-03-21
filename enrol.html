@@ -32,7 +32,7 @@ value="<?php echo "{$cost}";?>" size="5">&nbsp;
 
 <?php
 if( $instance->enrolperiod>0 ){
- echo "Длительность подписки на курс ";
+ echo "Продолжительность подписки на курс ";
  if($instance->enrolperiod>=86400){
     echo "(дней): ";
     echo round($instance->enrolperiod/86400);

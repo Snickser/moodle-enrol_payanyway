@@ -6,6 +6,15 @@ require_once($CFG->libdir.'/formslib.php');
 
 class enrol_payanyway_edit_form extends moodleform {
 
+    function get_expirynotify_options() {
+        $options = array(
+            0 => get_string('no'),
+            1 => get_string('expirynotifyenroller', 'core_enrol'),
+            2 => get_string('expirynotifyall', 'core_enrol')
+        );
+        return $options;
+    }
+
     function definition() {
         $mform = $this->_form;
 
@@ -92,6 +101,15 @@ class enrol_payanyway_edit_form extends moodleform {
             "courseid" => PARAM_INT
         ]);
 
+        $options = $this->get_expirynotify_options();
+        $mform->addElement('select', 'expirynotify', get_string('expirynotify', 'core_enrol'), $options);
+        $mform->addHelpButton('expirynotify', 'expirynotify', 'core_enrol');
+
+        $options = array('optional' => false, 'defaultunit' => 86400);
+        $mform->addElement('duration', 'expirythreshold', get_string('expirythreshold', 'core_enrol'), $options);
+        $mform->addHelpButton('expirythreshold', 'expirythreshold', 'core_enrol');
+        $mform->disabledIf('expirythreshold', 'expirynotify', 'eq', 0);
+
         $this->add_action_buttons(true, ($instance->id ? null : get_string('addinstance', 'enrol')));
 
         $this->set_data($instance);
@@ -112,6 +130,10 @@ class enrol_payanyway_edit_form extends moodleform {
                 $errors['cost'] = get_string('costerror', 'enrol_payanyway');
 
             }
+        }
+
+        if ($data['expirynotify'] > 0 and $data['expirythreshold'] < 86400) {
+            $errors['expirythreshold'] = get_string('errorthresholdlow', 'core_enrol');
         }
 
         return $errors;
