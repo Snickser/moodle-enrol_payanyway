@@ -1,6 +1,6 @@
 <?php
 
-$string['syncenrolmentstask'] = 'PayAnyWay синхронизация зачислений';
+$string['processexpirationstask'] = 'PayAnyWay синхронизация зачислений';
 $string['sendexpirynotificationstask'] = 'PayAnyWay отправка уведомлений об истечении срока действия зачисления';
 $string['messageprovider:expiry_notification'] = 'Уведомления об истечении срока обучения';
 
