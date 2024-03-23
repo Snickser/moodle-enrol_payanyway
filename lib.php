@@ -325,7 +325,7 @@ class enrol_payanyway_plugin extends enrol_plugin {
     */
     function cron() {
         $trace = new text_progress_trace();
-        $this->process_expirations($trace)
+        $this->process_expirations($trace);
     }
 
     /**
