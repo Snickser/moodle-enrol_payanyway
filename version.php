@@ -2,7 +2,7 @@
 
 defined('MOODLE_INTERNAL') or die();
 
-$plugin->version = 2024032102;
+$plugin->version = 2024032301;
 $plugin->requires = 2022041900;
 $plugin->component = 'enrol_payanyway';
 $plugin->cron      = 600;
