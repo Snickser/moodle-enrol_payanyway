@@ -17,10 +17,8 @@ class enrol_payanyway_plugin extends enrol_plugin {
         // set up the configuration
         $this->load_config();
         $this->recognised_currencies = array(
-			'RUB',
-            'CAD',
+            'RUB',
             'EUR',
-            'GBP',
             'USD',
         );
         $this->payanyway_url = 'https://www.payanyway.ru/';
